@@ -1,0 +1,49 @@
+package my.edu.tarc.demosimpledb;
+
+
+//TODO 2: Create an Entity class to present a record
+
+
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity(tableName = "user")
+public class User {
+    @PrimaryKey
+    @NonNull
+    public String phone;
+
+    @ColumnInfo(name = "first_name")
+    public String firstName;
+
+    @ColumnInfo(name =  "last_name")
+    public String lastName;
+
+    @NonNull
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(@NonNull String phone) {
+        this.phone = phone;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+}
+
