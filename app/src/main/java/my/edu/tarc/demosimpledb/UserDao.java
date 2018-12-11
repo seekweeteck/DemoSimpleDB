@@ -1,5 +1,6 @@
 package my.edu.tarc.demosimpledb;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -13,7 +14,7 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM user")
-    List<User> loadAllUsers();
+    LiveData<List<User>> loadAllUsers();
 
     @Query("SELECT * FROM user WHERE phone=:phone")
     List<User> findUserByPhone(String phone);
