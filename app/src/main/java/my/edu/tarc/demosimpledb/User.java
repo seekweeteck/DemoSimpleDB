@@ -13,13 +13,13 @@ import android.support.annotation.NonNull;
 public class User {
     @PrimaryKey
     @NonNull
-    public String phone;
+    private String phone;
 
     @ColumnInfo(name = "first_name")
-    public String firstName;
+    private String firstName;
 
     @ColumnInfo(name =  "last_name")
-    public String lastName;
+    private String lastName;
 
     @NonNull
     public String getPhone() {

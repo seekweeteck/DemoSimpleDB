@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
+
     public class UserViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewFirstName, textViewLastName, textViewPhone;
 
@@ -37,12 +38,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int i) {
-
+    public void onBindViewHolder(@NonNull UserViewHolder userViewHolder, int position) {
+        User user = userList.get(position);
+        userViewHolder.textViewFirstName.setText(user.getFirstName());
+        userViewHolder.textViewLastName.setText(user.getLastName());
+        userViewHolder.textViewPhone.setText(user.getPhone());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        if(userList != null)
+            return userList.size();
+        else
+            return 0;
     }
 }

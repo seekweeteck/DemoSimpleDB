@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">DemoSimpleDB</string>
+    <string name="app_name">Room Demo</string>
     <string name="no_record_found">No record found.</string>
 </resources>

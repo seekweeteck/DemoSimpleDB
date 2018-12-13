@@ -1,21 +1,18 @@
 package my.edu.tarc.demosimpledb;
 
-import android.arch.persistence.room.Room;
-import android.support.v7.app.AppCompatActivity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText editTextPhone, editTextFirstName, editTextLastName, editTextSearch;
+    private EditText editTextPhone, editTextFirstName, editTextLastName;
     private Button buttonSave;
-    List<User> userList;
-    List<User> searchUser;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPhone = findViewById(R.id.editTextPhone);
         editTextFirstName = findViewById(R.id.editTextFirstName);
         editTextLastName = findViewById(R.id.editTextLastName);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewUser);
         buttonSave = findViewById(R.id.buttonSave);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        userViewModel = ViewModelProviders.of(this).get();
 
+        final UserAdapter userAdapter = new UserAdapter(this);
+        recyclerView.setAdapter(userAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
